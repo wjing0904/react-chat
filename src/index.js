@@ -21,11 +21,11 @@ import BossInfo from './container/bossinfo/bossinfo'
 import GeniusInfo from './container/geniusinfo/geniusinfo'
 import Chat from './component/chat/chat'
 //判断是否开启调试工具
-const windowDevToolsExtension=window.devToolsExtension?window.devToolsExtension():fn=>fn()
+// const windowDevToolsExtension=window.devToolsExtension?window.devToolsExtension():fn=>fn()
 
 const store = createStore(reducers,compose(
     applyMiddleware(thunk),
-    windowDevToolsExtension
+    // windowDevToolsExtension
 )) 
 // function Boss(){
 //     return <h2>boss页面</h2>
@@ -38,9 +38,10 @@ ReactDom.render(
     <Provider  store={store}>
         <BrowserRouter>
             <div>
+
                 <AuthRoute></AuthRoute>
                 {/* Switch子组件下直接命中第一个 后面的就不管了 */}
-                <Switch>：
+                <Switch>
                     <Route path='/bossinfo' component={BossInfo}></Route>
                     <Route path='/geniusinfo' component={GeniusInfo}></Route>
                     <Route path='/login' component={Login}></Route>
@@ -48,9 +49,8 @@ ReactDom.render(
                     <Route path='/chat/:user' component={Chat}></Route>
                     <Route component={Dashboard}></Route>
                 </Switch>
-
                 {/* 找不到进入login */}
-                {/* <Redirect to='/login'></Redirect> */}
+                <Redirect to='/login'></Redirect>
             </div>
         </BrowserRouter>
     </Provider>,

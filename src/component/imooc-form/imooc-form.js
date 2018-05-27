@@ -9,7 +9,7 @@ export default function imoocForm(Comp){
         }
         //登录注册输入信息
         handleChange(key, val) {//注意 setstate是keyb必须加'[]'，否则变为key字符串
-            console.log(key,val)
+            // console.log(key,val)
             this.setState({
                 [key]: val
             })
